@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m "Site institucional da Cognitia"
+git branch -M main
+git remote add origin https://github.com/tsamaral13/cognitia-site.git
+git push -u origin main
