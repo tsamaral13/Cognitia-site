@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #020b18; color: #f4f8ff; font-family: Inter, system-ui, sans-serif; }
+::selection { background: rgba(47,125,246,.45); color: white; }
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size: 54px 54px; }
+.text-gradient { background: linear-gradient(110deg,#fff 10%,#a9c9ff 55%,#33d5e8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.glass { background: linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); border:1px solid rgba(255,255,255,.1); backdrop-filter: blur(18px); }
+.hero-premium::after { content:''; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 180px rgba(0,0,0,.28); }
+.section-glow { position:absolute; width:34rem; height:34rem; border-radius:50%; filter:blur(120px); background:rgba(47,125,246,.11); pointer-events:none; }
+@media (prefers-reduced-motion: reduce) { :root { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
