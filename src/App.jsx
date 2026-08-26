@@ -1,20 +1,28 @@
 import { useEffect, useState } from 'react';
 import HomePage from '@/pages/HomePage';
 import DroneArticlePage from '@/pages/DroneArticlePage';
+import ArenaSecurityArticlePage from '@/pages/ArenaSecurityArticlePage';
+import IndustrialSafetyArticlePage from '@/pages/IndustrialSafetyArticlePage';
 
-const ARTICLE_HASH = '#artigo-drones-autonomos';
+const pagesByHash = {
+  '#artigo-drones-autonomos': 'drone-article',
+  '#seguranca-arenas-eventos': 'arena-security-article',
+  '#seguranca-industrial-inteligente': 'industrial-safety-article',
+};
+
+const getPage = () => pagesByHash[window.location.hash] || 'home';
 
 export default function App() {
-  const [page, setPage] = useState(() => window.location.hash === ARTICLE_HASH ? 'drone-article' : 'home');
+  const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const syncPage = () => setPage(window.location.hash === ARTICLE_HASH ? 'drone-article' : 'home');
+    const syncPage = () => setPage(getPage());
     window.addEventListener('hashchange', syncPage);
     return () => window.removeEventListener('hashchange', syncPage);
   }, []);
 
   useEffect(() => {
-    if (page === 'drone-article') {
+    if (page !== 'home') {
       window.scrollTo({ top: 0, behavior: 'auto' });
       return;
     }
@@ -25,5 +33,8 @@ export default function App() {
     });
   }, [page]);
 
-  return page === 'drone-article' ? <DroneArticlePage /> : <HomePage />;
+  if (page === 'drone-article') return <DroneArticlePage />;
+  if (page === 'arena-security-article') return <ArenaSecurityArticlePage />;
+  if (page === 'industrial-safety-article') return <IndustrialSafetyArticlePage />;
+  return <HomePage />;
 }
